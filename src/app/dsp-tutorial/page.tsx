@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import CourseContent from './components/course-content'
 
 export default function DSP() {
   return (
@@ -50,25 +51,7 @@ export default function DSP() {
 
        </div>
        </div>
-       <Card className="lg:w-8/12 h-full overflow-y-scroll flex-1 border-2">
-  <CardHeader>
-    <CardTitle>Explore Concepts</CardTitle>
-    <CardDescription>
-      Interactive summaries and visual demos from DSP and electronic music theory.
-    </CardDescription>
-    <CardAction>
-      {/* Optional: Add buttons or toggles for filters, book selection, or playback */}
-    </CardAction>
-  </CardHeader>
-  <CardContent>
-    {/* Example placeholder for rendered content */}
-    {Array.from({ length: 10 }).map((_, i) => (
-      <p key={i} className="py-1 text-sm text-white/80">
-        This section covers a core idea from Chapter {i + 1}. Scroll to explore more.
-      </p>
-    ))}
-  </CardContent>
-</Card>
+       <CourseContent/>
 
        </section>
       </section>

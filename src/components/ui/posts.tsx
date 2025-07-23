@@ -27,7 +27,7 @@ export default function Posts({filter}: {filter?: string}) {
     }
 
   return (
-    <div className='h-full grid lg:grid-cols-2 md:grid-cols-1 gap-4'>
+    <div className='h-full grid grid-cols-2 gap-4'>
       {filteredPosts.map(post => (
         <BlogPostCard key={post.id} post={post} />
       ))}

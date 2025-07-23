@@ -4,7 +4,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 
-const postsDir = path.join(process.cwd(), '/src/posts/posts');
+const postsDir = path.join(process.cwd(), '/src/posts/aerwyrm');
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDir)

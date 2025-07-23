@@ -14,6 +14,8 @@ interface BlogPostCardProps {
     id: string;
     title: string;
     date: string;
+    featured?: boolean;
+    show?: boolean;
     blurb: string;
     image: string;
     slug: string;
@@ -23,8 +25,8 @@ interface BlogPostCardProps {
 
 export function BlogPostCard({ post }: BlogPostCardProps) {
   return (
-    <Card className="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl gap-0 p-0 border-none hover:border-2 border-cyan-500/10 h-full ">
-      <Link href={`/blog/${post.slug}`} className="block" prefetch={false}>
+    <Card className={`flex ${post.featured ? "flex-col" : "flex-row"} overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl gap-0 p-0 border-none hover:border-2 border-cyan-500/10 h-full `}>
+      <Link href={`/blog/${post.slug}`} className="block h-full w-full" prefetch={false}>
         <div className="relative h-48 w-full">
           {post.image ? (<Image
             src={
@@ -42,7 +44,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
           )}
         </div>
       </Link>
-
+      <div>
       <CardHeader className="flex-grow p-4">
         <CardTitle className="text-xl font-bold leading-tight max-w-xl">
           <Link href={`/blog/${post.slug}`} prefetch={false}>
@@ -64,7 +66,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
       </CardHeader>
 
       <CardContent className="flex-grow p-4 pt-0">
-        <p className="line-clamp-3 text-gray-700 dark:text-gray-300 text-sm">
+        <p className="line-clamp-3 text-white/80 dark:text-gray-300 text-sm">
           {post.blurb}
         </p>
       </CardContent>
@@ -75,6 +77,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
             Read More
           </Link>
         </Button>
+      </div>
       </div>
     </Card>
   );

@@ -10,7 +10,7 @@ const components = {
 }
 
 export async function generateStaticParams() {
-  const blogDir = path.join(process.cwd(), "/src/posts/posts")
+  const blogDir = path.join(process.cwd(), "/src/posts/aerwyrm")
   const files = await fs.readdir(blogDir)
 
   return files
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const filePath = path.join(process.cwd(), "/src/posts/posts", `${params.slug}.mdx`)
+  const filePath = path.join(process.cwd(), "/src/posts/aerwyrm", `${params.slug}.mdx`)
 
   try {
     const fileContent = await fs.readFile(filePath, "utf8")

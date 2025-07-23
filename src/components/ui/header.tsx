@@ -25,9 +25,9 @@ export default function AppHeader() {
     ],
   }
   return (
-    <header className="flex items-center justify-between py-4 text-white/80 max-w-7xl mx-auto w-full">
-              <Link 
-              href="/" 
+    <header className="px-4 lg:px-0 flex items-center justify-between py-4 text-white/80 max-w-7xl mx-auto w-full">
+              <Link
+              href="/"
               className="font-aer text-2xl font-light hover:font-bold transition-all duration-700 cursor-pointer">
                 Aerwyrm
               </Link>
@@ -55,14 +55,14 @@ export default function AppHeader() {
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[250px] sm:w-[300px] bg-background p-4">
                   <SheetHeader className='px-0'>
-                    <SheetTitle className='font-aer text-2xl font-medium'>Aerwyrm</SheetTitle>
+                    <SheetTitle className='font-aer text-2xl font-medium hover:font-light transition-all duration-700'>Aerwyrm</SheetTitle>
                   </SheetHeader>
                   <nav className="grid gap-4 font-mono">
                     {navigationMenu.items.map((item) => (
                       <Link
                         key={item.title}
                         href={item.href}
-                        className="text-lg font-medium hover:text-primary transition-colors"
+                        className="text-lg font-medium hover:text-cyan-400 transition-colors"
                         onClick={() => setOpen(false)} 
                       >
                         {item.title}
