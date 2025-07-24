@@ -20,7 +20,11 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}){
   // await params
   const { slug } = await params;
   const filePath = path.join(
@@ -43,7 +47,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     });
 
     return (
-      <div className="min-h-screen bg-black text-white text-sm font-sans">
+      <div className="min-h-screen bg-[#0a0a0a] text-white text-sm font-sans">
         <article className="max-w-5xl mx-auto px-4 lg:px-0 pt-10">
           <header className="mb-12 font-mono">
             <h1 className="text-xl md:text-4xl font-bold mb-6 leading-tight">
