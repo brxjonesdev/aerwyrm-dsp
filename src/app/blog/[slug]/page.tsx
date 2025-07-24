@@ -20,15 +20,13 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  // await params
+  const { slug } = await params;
   const filePath = path.join(
     process.cwd(),
     '/src/posts/aerwyrm',
-    `${params.slug}.mdx`
+    `${slug}.mdx`
   );
 
   try {
