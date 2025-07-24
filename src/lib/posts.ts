@@ -1,16 +1,16 @@
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-
 const postsDir = path.join(process.cwd(), '/src/posts/aerwyrm');
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDir)
-  .filter((file) => file.endsWith('.mdx') || file.endsWith('.md'))
-  .filter((file) => file !== 'template-post.mdx' && file !== 'template-post.md')
-  ;  
+  return fs
+    .readdirSync(postsDir)
+    .filter((file) => file.endsWith('.mdx') || file.endsWith('.md'))
+    .filter(
+      (file) => file !== 'template-post.mdx' && file !== 'template-post.md'
+    );
 }
 
 export function getPostBySlug(slug: string) {
@@ -28,6 +28,7 @@ export function getPostBySlug(slug: string) {
     blurb: data.blurb || '',
     show: data.show !== false, // Default to true if not specified
     image: data.image || '',
+    order: data.order || null,
     slug: realSlug,
     content,
   };

@@ -1,0 +1,53 @@
+---
+title: Chapter 1 UDSP
+date: 2025-07-17
+show: false
+image: 
+blurb: 
+category: dsp
+order: "2"
+---
+What is a signal anyways? A signal is a any measurable quantity that changes over time (and sometimes space).
+An example of a signal would be the voltage coming from a electric guitar pickup or the sound of your voice going into your mic. The term `Signal Processing` refers to well processing that data and doing something with it like filtering it or transposing it with math.
+
+(
+Diagram of signal 
+)
+
+There are two types of signals, Analog or Digital.
+A signal is analog if it continuous in time and amplitude, this means that it's smooth over time like voltage coming from the outlet or a sinewave from an analog synth. The term `analog` is a little outdated from when we used voltage to refer to real world variables like temperature or speed, the modern term is just a `continuous` signal.
+
+To work on computers, that continuous signal needs to be converted into a digital signal. This process is called `Sampling`, where we measure the signal at fixed intervals to get a set of discrete values also known as a `discrete time signal`. With discrete signals, the time and signal are quantized, meaning they are broken into steps and rounded up. We only know the signals value at those step, much like checking the temp of a pot of water every 10 mins. 
+
+In short:  
+**Analog (continuous) signal** → **Sampling** → **Discrete-time signal**
+
+**Theory**
+
+Both of these types of signals can be represented with an equation.
+
+A continuous signal can be represented as`
+$$x(t) = sin(2\pi f_ot)$$
+To understand this equation, 
+`x(t)` represents the continuous signal.
+`sin()` gives the amplitude(height) of the wave at the moment.
+`2pi` is one full cycle in radians (360deg)
+`f0` is the frequency of the signal in Hz (how fast the swing is)
+`t` is the continuous time in seconds
+
+
+To convert it to digital, we need to sample it every `Ts` seconds.
+$$x(n) = sin(2\pi f_0nT_s)$$
+`n` is the sample index
+`Ts`is the time in-between samples
+
+(*Explain with code*)
+
+On the topic of discrete signals, a discrete system is a collection of operations for a discrete signal sequence
+
+(Explain with code)
+
+$$y(n) = 2x(n)-1$$
+is called the `difference equation`.
+
+

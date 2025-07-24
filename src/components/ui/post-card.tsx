@@ -1,84 +1,54 @@
-import Link from "next/link";
-import Image from "next/image";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import Link from "next/link"
+import Image from "next/image"
 
 interface BlogPostCardProps {
   post: {
-    id: string;
-    title: string;
-    date: string;
-    featured?: boolean;
-    show?: boolean;
-    blurb: string;
-    image: string;
-    slug: string;
-    category?: string;
-  };
+    id: string
+    title: string
+    date: string
+    featured?: boolean
+    show?: boolean
+    blurb: string
+    image: string
+    slug: string
+    category?: string
+  }
 }
 
 export function BlogPostCard({ post }: BlogPostCardProps) {
   return (
-    <Card className={`flex ${post.featured ? "flex-col" : "flex-row"} overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl gap-0 p-0 border-none hover:border-2 border-cyan-500/10 h-full `}>
-      <Link href={`/blog/${post.slug}`} className="block h-full w-full" prefetch={false}>
-        <div className="relative h-48 w-full">
-          {post.image ? (<Image
-            src={
-              post.image ||
-              "/placeholder.svg?height=400&width=600&query=abstract%20blog%20post"
-            }
+    <Link
+      href={`/blog/${post.slug}`}
+      className="flex items-center gap-4 py-4 hover:bg-white/10 transition-colors duration-200 rounded-lg p-4 text-black border-2"
+      prefetch={false}
+    >
+      {post.image && (
+        <div className="relative flex-shrink-0 size-20 rounded-md overflow-hidden">
+          <Image
+            src={post.image || "/placeholder.svg?height=80&width=80&query=abstract%20thumbnail" || "/placeholder.svg"}
             alt={post.title}
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />): (
-            <div className="h-full w-full bg-cyan-200 flex items-center justify-center">
-            
-            </div>
-          )}
+            sizes="80px"
+          />
         </div>
-      </Link>
-      <div>
-      <CardHeader className="flex-grow p-4">
-        <CardTitle className="text-xl font-bold leading-tight max-w-xl">
-          <Link href={`/blog/${post.slug}`} prefetch={false}>
-            {post.title}
-          </Link>
-        </CardTitle>
-        <CardDescription className="text-sm text-gray-500 dark:text-gray-400">
+      )}
+      <div className="flex-1 min-w-0">
+        <h3 className="text-lg font-semibold leading-tight line-clamp-2 text-white/80">{post.title}</h3>
+        <p className="text-sm text-white/80 mt-1">
           {new Date(post.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
           {post.category && (
-            <span className="ml-2 text-sm inline-block rounded-full bg-gray-100 px-2 py-0.5 font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+            <span className="ml-2 text-xs inline-block rounded-full bg-cyan-400 px-2 py-0.5 font-medium text-white">
               {post.category}
             </span>
           )}
-        </CardDescription>
-      </CardHeader>
-
-      <CardContent className="flex-grow p-4 pt-0">
-        <p className="line-clamp-3 text-white/80 dark:text-gray-300 text-sm">
-          {post.blurb}
         </p>
-      </CardContent>
-
-      <div className="p-4 pt-0">
-        <Button asChild variant="link" className="px-0">
-          <Link href={`/blog/${post.slug}`} prefetch={false}>
-            Read More
-          </Link>
-        </Button>
+        {post.blurb && <p className="text-sm  dark:text-gray-300 mt-2 line-clamp-2 text-cyan-400">{post.blurb}</p>}
       </div>
-      </div>
-    </Card>
-  );
+    </Link>
+  )
 }

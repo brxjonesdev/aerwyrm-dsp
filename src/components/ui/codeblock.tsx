@@ -1,23 +1,27 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { Copy, Check } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from 'react';
+import { Copy, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface CodeBlockProps {
-  children: string
-  language?: string
-  filename?: string
+  children: string;
+  language?: string;
+  filename?: string;
 }
 
-export function CodeBlock({ children, language = "text", filename }: CodeBlockProps) {
-  const [copied, setCopied] = useState(false)
+export function CodeBlock({
+  children,
+  language = 'text',
+  filename,
+}: CodeBlockProps) {
+  const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(children)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+    await navigator.clipboard.writeText(children);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="relative group my-6">
@@ -29,7 +33,7 @@ export function CodeBlock({ children, language = "text", filename }: CodeBlockPr
       )}
       <div className="relative">
         <pre
-          className={`bg-cyan-900 text-cyan-100 p-4 overflow-x-auto ${filename ? "rounded-t-none" : "rounded-lg"} rounded-b-lg`}
+          className={`bg-cyan-900 text-cyan-100 p-4 overflow-x-auto ${filename ? 'rounded-t-none' : 'rounded-lg'} rounded-b-lg`}
         >
           <code className={`language-${language} text-sm`}>{children}</code>
         </pre>
@@ -39,15 +43,19 @@ export function CodeBlock({ children, language = "text", filename }: CodeBlockPr
           className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-cyan-800 hover:bg-cyan-700 text-cyan-300"
           onClick={copyToClipboard}
         >
-          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          {copied ? (
+            <Check className="h-4 w-4" />
+          ) : (
+            <Copy className="h-4 w-4" />
+          )}
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
 interface InlineCodeProps {
-  children: string
+  children: string;
 }
 
 export function InlineCode({ children }: InlineCodeProps) {
@@ -55,5 +63,5 @@ export function InlineCode({ children }: InlineCodeProps) {
     <code className="bg-cyan-100 dark:bg-cyan-800 text-cyan-800 dark:text-cyan-200 px-1.5 py-0.5 rounded text-sm font-mono">
       {children}
     </code>
-  )
+  );
 }

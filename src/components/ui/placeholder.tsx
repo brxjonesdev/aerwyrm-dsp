@@ -49,19 +49,26 @@ export function Placeholder({
       className={cn(
         'flex flex-1 h-fit flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 bg-muted/10 text-center',
         sizeClasses[size],
-        className,
+        className
       )}
     >
       {showIcon && (
-        <Icon className={cn('mb-3 text-muted-foreground/50', iconSizes[size])} />
+        <Icon
+          className={cn('mb-3 text-muted-foreground/50', iconSizes[size])}
+        />
       )}
-      <h3 className={cn('font-semibold text-muted-foreground mb-2', textSizes[size])}>
+      <h3
+        className={cn(
+          'font-semibold text-muted-foreground mb-2',
+          textSizes[size]
+        )}
+      >
         {title}
       </h3>
       <p
         className={cn(
           'text-muted-foreground/75 max-w-sm',
-          size === 'sm' ? 'text-xs' : size === 'md' ? 'text-sm' : 'text-base',
+          size === 'sm' ? 'text-xs' : size === 'md' ? 'text-sm' : 'text-base'
         )}
       >
         {description}
